@@ -1,0 +1,25 @@
+# Compiled binaries / build artifacts  
+/target/
+**/*.rs.bk
+*.pdb
+
+# Lock file (incluido en repo para reproducibilidad)
+# Cargo.lock
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Tests and screenshots - No se incluyen
+tests/
+
+# Temporary files
+*.tmp
+*.log
