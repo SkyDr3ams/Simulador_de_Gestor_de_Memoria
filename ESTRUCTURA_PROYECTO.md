@@ -17,8 +17,7 @@ memory_sim/
 │
 └── docs_entrega/                   # Documentación para el profesor
     ├── Manual_Usuario.md           # Guía de uso del simulador
-    ├── Manual_Tecnico.md           # Documentación técnica detallada
-    └── Reporte_Tecnico_Final.md    # Análisis comparativo de algoritmos
+    ├── Manual_Tecnico.md           # Documentación técnica
 ```
 
 ## 📝 Documentos Incluidos
@@ -31,19 +30,11 @@ memory_sim/
 2. **Manual_Tecnico.md**: Arquitectura, estructuras de datos, algoritmos
 3. **Reporte_Tecnico_Final.md**: Análisis comparativo de algoritmos (FIFO/Reloj/LRU)
 
-## 🚫 Archivos Excluidos (.gitignore)
-
-- Binarios compilados (`target/`)
-- Carpeta de tests (`tests/`)
-- Archivos temporales (`*.tmp`, `*.log`)
-- Archivos del IDE/editor (`.vscode/`, `.idea/`)
-- Archivos del sistema (`.DS_Store`, `Thumbs.db`)
 
 ## 📊 Métricas del Proyecto
 
-- **Líneas de código**: ~900 (sin documentación)
 - **Algoritmos implementados**: 3 (FIFO, Reloj, LRU)
-- **Documentación**: 3 manuales + README
+- **Documentación**: 2 manuales + README
 - **Archivos de código**: 3 (main.rs, models.rs, ui.rs)
 - **Lenguaje**: Rust 1.70+
 
@@ -94,8 +85,3 @@ cargo clean
 cargo check
 ```
 
----
-
-**Versión**: 1.0  
-**Fecha**: Diciembre 2024  
-**Proyecto**: Simulador de Gestor de Memoria - Sistemas Operativos

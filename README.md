@@ -1,10 +1,5 @@
 # Simulador de Gestor de Memoria RAM y Swap
 
-## 👥 Integrantes del Equipo
-- **[Tu Nombre]** - Matrícula: [Tu Matrícula]
-- **[Nombre Compañero 2]** - Matrícula: [Matrícula]
-- **[Agregar más según corresponda]**
-
 ## 📖 Descripción
 
 Simulador de gestor de memoria RAM y área de intercambio (Swap) de un sistema operativo. El proyecto permite visualizar cómo un SO asigna recursos, traduce direcciones y maneja situaciones de escasez de memoria en un entorno multiprogramado utilizando el esquema de **Paginación**.
@@ -44,7 +39,7 @@ winget install Rustlang.Rust.MSVC
 ### Clonar el Repositorio
 
 ```bash
-git clone https://github.com/[tu-usuario]/memory_sim.git
+git clone https://github.com/SkyDr3ams/Simulador_de_Gestor_de_Memoria/edit/main/README.md
 cd memory_sim
 ```
 
@@ -96,24 +91,24 @@ Ingrese su elección (1-2): _
 ### Vista Principal
 
 ```
-┌─ Gestor de Memoria v1.0 | Algoritmo: FIFO | Modo: AUTOMATICO | Estado: EJECUTANDO ─┐
-├──────────────────────── Estadísticas del Sistema ─────────────────────────────────────┤
-│  Procesos: 12/30 | Uso RAM: 14/16 marcos (87.5%) | Fallos Página: 42 (26.92%) | ... │
-╞════════════════════════════════════════════════════════════════════════════════════════╡
-│╔══════ Mapa de Memoria Física (RAM) ═══╗  ┌─ Métricas de Rendimiento ─┐            │
-│║ P01 P02 P03 P04 P05 P06 P07 P08       ║  │ Accesos Totales: 156      │            │
-│║ P09 P10 P11 P12 -- -- -- --           ║  │ Fallos de Página: 42      │            │
-│╚════════════════════════════════════════╝  │ Tasa de Fallos: 26.92%    │            │
-│                                            │ Swaps Realizados: 18      │            │
-│                                            └───────────────────────────┘            │
-│                                            ┌─ Procesos Activos (12) ─┐              │
-│                                            │ PID 01 | 512KB | 2/2 pgs│              │
-│                                            │ PID 02 | 768KB | 3/3 pgs│              │
-├─────── Registro del Sistema ──────┬────────── Área de Swap (8/50) ─────────────────┤
-│ [SWAP] Process P3 Page 1 moved    │ PID 03 Página 1                              │
-│ [NEW] Process P12 created          │ PID 05 Página 0                              │
-│ [TERM] Process P7 terminated       │ PID 07 Página 2                              │
-└────────────────────────────────────┴──────────────────────────────────────────────────┘
+┌─ Gestor de Memoria v1.0 | Algoritmo: FIFO | Modo: AUTOMATICO | Estado: EJECUTANDO        ─┐
+├──────────────────────── Estadísticas del Sistema ─────────────────────────────────────────┤
+│  Procesos: 12/30 | Uso RAM: 14/16 marcos (87.5%) | Fallos Página: 42 (26.92%) | ...       │
+╞═══════════════════════════════════════════════════════════════════════════════════════════╡
+│╔══════ Mapa de Memoria Física (RAM) ═══╗   ┌─ Métricas de Rendimiento ─┐                  │
+│║ P01 P02 P03 P04 P05 P06 P07 P08       ║   │ Accesos Totales: 156      │                  │
+│║ P09 P10 P11 P12 -- -- -- --           ║   │ Fallos de Página: 42      │                  │
+│╚═══════════════════════════════════════╝   │ Tasa de Fallos: 26.92%    │                  │
+│                                            │ Swaps Realizados: 18      │                  │
+│                                            └───────────────────────────┘                  │
+│                                            ┌─   Procesos Activos (12) ─┐                  │
+│                                            │ PID 01 | 512KB | 2/2 pgs  │                  │
+│                                            │ PID 02 | 768KB | 3/3 pgs  │                  │
+├─────── Registro del Sistema ──────┬────────── Área de Swap (8/50) ────────────────────────┤
+│ [SWAP] Process P3 Page 1 moved             │ PID 03 Página 1                              │
+│ [NEW] Process P12 created                  │ PID 05 Página 0                              │
+│ [TERM] Process P7 terminated               │ PID 07 Página 2                              │
+└────────────────────────────────────────────┴──────────────────────────────────────────────┘
 │ Q:Salir | P:Pausar | N:Nuevo Proceso | K:Matar Proceso | 1/2/3:Algoritmo | A:Cambiar Modo │
 └────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -123,7 +118,6 @@ Ingrese su elección (1-2): _
 - Estadísticas centralizadas en una línea
 - Mapa de RAM compacto (8 columnas, 1 línea de altura)
 - Panel lateral con métricas y lista de procesos
-- Logs limpios sin emojis con etiquetas [CATEGORY]
 - Área de Swap visible
 - Barra de controles siempre visible
 
@@ -187,21 +181,10 @@ memory_sim/
 │   ├── models.rs    → Lógica del gestor de memoria (core)
 │   └── ui.rs        → Interfaz profesional (TUI con Ratatui)
 ├── config.ini       → Configuración del sistema
-├── tests/           → Evidencias de pruebas
 - Mapa de RAM con múltiples procesos
 - Área de Swap activa
 - Comparación de algoritmos (FIFO/Reloj/LRU)
 - Panel de métricas con estadísticas
-
----
-
-## 📚 Documentación Adicional
-
-**Nota**: La carpeta `docs_entrega/` contiene la documentación para entregar al profesor (no se sube a GitHub).
-
-- **Manual de Usuario**: Guía paso a paso para usar el simulador
-- **Manual Técnico**: Arquitectura, algoritmos y estructuras de datos
-- **Reporte Técnico**: Análisis comparativo y resultados
 
 ---
 

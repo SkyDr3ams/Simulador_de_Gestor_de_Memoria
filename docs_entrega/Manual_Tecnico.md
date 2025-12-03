@@ -10,40 +10,40 @@ El simulador implementa un modelo simplificado pero funcional de un gestor de me
 
 ```
 ┌────────────────────────────────────┐
-│      Capa de Presentación         │
-│         (ui.rs - TUI)             │
+│      Capa de Presentación          │
+│         (ui.rs - TUI)              │
 └────────────────┬───────────────────┘
                  │
 ┌────────────────▼───────────────────┐
-│      Capa de Lógica de Negocio    │
-│     (models.rs - GestorMemoria)   │
+│      Capa de Lógica de Negocio     │
+│     (models.rs - GestorMemoria)    │
 └────────────────┬───────────────────┘
                  │
 ┌────────────────▼───────────────────┐
-│      Capa de Configuración        │
-│       (main.rs - Config)          │
+│      Capa de Configuración         │
+│       (main.rs - Config)           │
 └────────────────────────────────────┘
 ```
 
 ### Diagrama de Clases (UML Simplificado)
 
 ```
-┌─────────────────────────────┐
-│    GestorMemoria            │
-├─────────────────────────────┤
-│ + marcos_ram: Vec<Marco>    │
-│ + cola_swap: VecDeque       │
-│ + procesos: Vec<Proceso>    │
+┌─────────────────────────────────┐
+│          GestorMemoria          │
+├─────────────────────────────────┤
+│ + marcos_ram: Vec<Marco>        │
+│ + cola_swap: VecDeque           │
+│ + procesos: Vec<Proceso>        │
 │ + algoritmo: AlgoritmoReemplazo │
-│ + fallos_pagina: usize      │
-│ + accesos_totales: usize    │
-├─────────────────────────────┤
-│ + new()                     │
-│ + asignar_proceso()         │
-│ + matar_proceso_aleatorio() │
-│ - cargar_pagina()           │
-│ - reemplazar_pagina()       │
-└──────────┬──────────────────┘
+│ + fallos_pagina: usize          │
+│ + accesos_totales: usize        │
+├─────────────────────────────────┤
+│ + new()                         │
+│ + asignar_proceso()             │
+│ + matar_proceso_aleatorio()     │
+│ - cargar_pagina()               │
+│ - reemplazar_pagina()           │
+└──────────┬──────────────────────┘
            │
            │ contiene
            │
@@ -57,13 +57,13 @@ El simulador implementa un modelo simplificado pero funcional de un gestor de me
            │
            │ tiene
            │
-      ┌────▼───────┐
-      │   Pagina   │
-      ├────────────┤
-      │ + id       │
-      │ + marco_id │
-      │ + ultimo_uso│
-      └────────────┘
+      ┌────▼─────────┐
+      │   Pagina     │ 
+      ├──────────────┤
+      │ + id         │
+      │ + marco_id   │
+      │ + ultimo_uso │
+      └──────────────┘
 ```
 
 ---
@@ -389,7 +389,7 @@ FIN PROCEDIMIENTO
 ```
 
 **Pseudocódigo**:
-```pascal
+```
 FUNCIÓN reemplazar_pagina() → índice_marco:
     // Seleccionar víctima según algoritmo
     SEGÚN algoritmo_activo HACER
@@ -573,7 +573,7 @@ fn verificar_consistencia(gestor: &GestorMemoria) -> bool {
 **Pasos**:
 1. Configurar RAM muy pequeña (4 marcos)
 2. Crear procesos hasta saturar Swap
-3. Verificar mensaje: "❌ Swap lleno (50 páginas MAX)"
+3. Verificar mensaje: "Swap lleno (50 páginas MAX)"
 4. Confirmar que `cola_swap.len() == 50`
 
 ---
@@ -625,7 +625,3 @@ Evita crecimiento ilimitado de memoria.
 6. **Working Set**: Implementar modelo de conjunto de trabajo
 
 ---
-
-**Versión**: 1.0  
-**Última actualización**: [Fecha]  
-**Autores**: [Nombres del equipo]

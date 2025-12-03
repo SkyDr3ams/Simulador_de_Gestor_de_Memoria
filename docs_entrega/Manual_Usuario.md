@@ -6,22 +6,13 @@
 
 ### ¿Qué es el Simulador de Gestor de Memoria?
 
-Este simulador es una herramienta educativa que permite visualizar y comprender cómo un Sistema Operativo gestiona la memoria RAM y el área de intercambio (Swap). 
+Este simulador es una herramienta que permite visualizar y comprender cómo un Sistema Operativo gestiona la memoria RAM y el área de intercambio (Swap). 
 
 **Utiliza el esquema de Paginación** para asignar memoria a procesos de forma dinámica, mostrando en tiempo real:
 - Asignación de marcos de memoria
 - Tablas de páginas por proceso
 - Algoritmos de reemplazo de páginas (FIFO, LRU, Reloj)
 - Métricas de rendimiento
-
-### ¿Para quién es este manual?
-
-Este manual está diseñado para:
-- ✅ Estudiantes de Sistemas Operativos
-- ✅ Profesores que quieran demostrar conceptos
-- ✅ Cualquier persona interesada en aprender cómo funciona la memoria virtual
-
-**No se requieren conocimientos previos de programación**, solo conceptos básicos de SO.
 
 ---
 
@@ -120,12 +111,12 @@ Verás una interfaz como esta:
 
 ```
 ┌─ SIMULADOR DE MEMORIA | ▶️ EJECUTANDO | Algoritmo: FIFO | Página: 256KB ─┐
-│                                                                            │
-│  [Panel de métricas]              [Mapa de RAM]                          │
-│                                                                            │
-├─ Logs ────────────────────────────────┬── Swap ─────────────────────────┤
-│  🟢 NUEVO: P1 'P_1' (512KB, 2 págs)  │  💿 P3 Pág0                     │
-│  🔄 SWAP: P2-Pág1 → Swap (Marco 5)   │  💿 P3 Pág1                     │
+│                                                                           │
+│  [Panel de métricas]              [Mapa de RAM]                           │
+│                                                                           │
+├─ Logs ────────────────────────────────┬── Swap ─────────────────────────  ┤
+│  🟢 NUEVO: P1 'P_1' (512KB, 2 págs)  │  💿 P3 Pág0                       │
+│  🔄 SWAP: P2-Pág1 → Swap (Marco 5)   │  💿 P3 Pág1                       │
 └────────────────────────────────────────┴──────────────────────────────────┘
 ```
 
@@ -220,13 +211,13 @@ K: Matar proceso
 
 ```
 🗂️ Mapa de Memoria Física (RAM)
-┌───┬───┬───┬───┐
-│P1 │P2 │P3 │LIBRE│
-│Pág0│Pág1│Pág0│   │
-├───┼───┼───┼───┤
-│P1 │P4 │P4 │LIBRE│
-│Pág1│Pág0│Pág1│   │
-└───┴───┴───┴───┘
+┌────┬────┬────┬─────┐
+│P1  │P2  │P3  │LIBRE│
+│Pág0│Pág1│Pág0│     │
+├────┼────┼────┼─────┤
+│P1  │P4  │P4  │LIBRE│
+│Pág1│Pág0│Pág1│     │
+└────┴────┴────┴─────┘
 ```
 
 **Cómo leer**:
@@ -239,28 +230,28 @@ K: Matar proceso
 ### 4. Registro de Eventos (Abajo Izquierda)
 
 ```
-📋 Registro de Eventos
-💀 TERMINADO: P5 finalizado y liberado
-🔄 SWAP: P3-Pág1 → Swap (Marco 8 liberado)
-🟢 NUEVO: P6 'P_6' (768KB, 3 págs)
+Registro de Eventos
+TERMINADO: P5 finalizado y liberado
+SWAP: P3-Pág1 → Swap (Marco 8 liberado)
+NUEVO: P6 'P_6' (768KB, 3 págs)
 ```
 
 **Símbolos**:
-- 🟢 **NUEVO**: Proceso creado
-- 💀 **TERMINADO**: Proceso finalizado
-- 🔄 **SWAP**: Página enviada a Swap
-- ❌ **Error**: Algo salió mal
-- ⏸️ **Sistema PAUSADO/EJECUTANDO**: Cambio de estado
+- **NUEVO**: Proceso creado
+- **TERMINADO**: Proceso finalizado
+- **SWAP**: Página enviada a Swap
+- **Error**: Algo salió mal
+- **Sistema PAUSADO/EJECUTANDO**: Cambio de estado
 
 ### 5. Cola de Swap (Abajo Derecha)
 
 ```
-💾 Swap (5/50)
-💿 P3 Pág0
-💿 P3 Pág1
-💿 P5 Pág2
-💿 P7 Pág0
-💿 P8 Pág1
+Swap (5/50)
+P3 Pág0
+P3 Pág1
+P5 Pág2
+P7 Pág0
+P8 Pág1
 ```
 
 - Muestra páginas actualmente en el área de intercambio
@@ -269,98 +260,7 @@ K: Matar proceso
 
 ---
 
-## 🎓 Escenarios de Uso Educativo
-
-### Escenario 1: Entender Paginación Básica
-
-**Objetivo**: Ver cómo se asignan páginas a marcos
-
-**Pasos**:
-1. Iniciar con configuración por defecto
-2. **Pausar** inmediatamente (teclaP)
-3. Crear 3 procesos manualmente (tecla N, 3 veces)
-4. Observar en el mapa de RAM cómo se asignan los marcos
-5. Notar en métricas: Accesos pero sin Fallos
-
-**Aprenderás**: Asignación directa cuando hay espacio disponible
-
----
-
-### Escenario 2: Comparar Algoritmos de Reemplazo
-
-**Objetivo**: Ver diferencias entre FIFO, Reloj y LRU
-
-**Pasos**:
-
-**Experimento con FIFO**:
-1. Iniciar simulador (algoritmo FIFO por defecto)
-2. Dejar correr 2 minutos
-3. Anotar: Fallos de Página, Tasa de Fallos
-4. **Salir (Q)**
-
-**Experimento con Reloj**:
-1. Reiniciar simulador
-2. **Cambiar a Reloj** (tecla 2)
-3. Dejar correr 2 minutos
-4. Anotar métricas
-5. **Salir**
-
-**Experimento con LRU**:
-1. Reiniciar simulador
-2. **Cambiar a LRU** (tecla 3)
-3. Dejar correr 2 minutos
-4. Anotar métricas
-
-**Comparar** en tabla:
-| Algoritmo | Fallos | Tasa % | Swaps |
-|-----------|--------|--------|-------|
-| FIFO      | ?      | ?      | ?     |
-| Reloj     | ?      | ?      | ?     |
-| LRU       | ?      | ?      | ?     |
-
-**Aprender\u00e1s**: LRU suele tener menos fallos, pero es más complejo
-
----
-
-### Escenario 3: Saturación de Memoria
-
-**Objetivo**: Ver qué pasa cuando se llena la RAM y el Swap
-
-**Pasos**:
-1. Editar `config.ini`:
-   ```ini
-   RAM_SIZE=2048
-   SWAP_SIZE=4096
-   PAGE_SIZE=256
-   ```
-2. Iniciar simulador
-3. Crear muchos procesos manualmente (tecla N repetidamente)
-4. Observar:
-   - RAM llena (Rojo en gauge)
-   - Swap llenándose
-   - Mensajes de Swap en logs
-5. Continuar hasta ver: **"Swap lleno"**
-
-**Aprenderás**: Límites del sistema y qué pasa al agotarse recursos
-
----
-
-### Escenario 4: Liberar Memoria
-
-**Objetivo**: Entender cómo liberar espacio en RAM
-
-**Pasos**:
-1. Llenar la RAM (crear ~20 procesos con N)
-2. Observar RAM al 100%
-3. Matar procesos (tecla K varias veces)
-4. Ver cómo marcos se liberan (aparece "LIBRE")
-5. Observar métrica "Procesos Finalizados" incrementar
-
-**Aprenderás**: Gestión del ciclo de vida de procesos
-
----
-
-## ❓ Preguntas Frecuentes (FAQ)
+## Preguntas / Dudas
 
 ### ¿Por qué aparece "Swap lleno"?
 
@@ -391,7 +291,7 @@ K: Matar proceso
 
 ---
 
-## 🐛 Solución de Problemas
+## Solución de Problemas
 
 ### El simulador no compila
 
@@ -426,15 +326,3 @@ K: Matar proceso
 - **Muy lento**: Es normal, los procesos se crean cada ~500ms
 
 ---
-
-## 📞 Soporte
-
-Si tienes problemas no cubiertos en este manual:
-
-1. Revisa el archivo `README.md` para información técnica
-2. Consulta la documentación técnica
-3. Contacta al autor: [email-del-proyecto]
-
----
-
-**¡Disfruta aprendiendo sobre gestión de memoria!** 🎉
